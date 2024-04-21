@@ -51,7 +51,7 @@ class Solution {
                 TreeNode n = q.poll();
             
                 isVisited.add(n);
-                System.out.println(n.val);
+                //System.out.println(n.val);
                 if(n.left != null && !isVisited.contains(n.left)) {
                     q.add(n.left);
                     if(k==d){
