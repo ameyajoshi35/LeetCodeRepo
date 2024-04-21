@@ -37,14 +37,14 @@ class Solution {
             }
         }
         
-        // for(TreeNode r : pMap.keySet()){
-        //     System.out.println(r.val +"-"+pMap.get(r).val);
-        // }
         
         q.add(target);
-        if(k==0) ans.add(target.val);
-        int d = 1;
-        while(!q.isEmpty() && d <=k){
+        int d = 0;
+        while(!q.isEmpty()){
+            
+            
+            if(d++==k) break;
+            
             
             int size = q.size();
             for(int i=0;i<size;i++) {
@@ -54,30 +54,26 @@ class Solution {
                 //System.out.println(n.val);
                 if(n.left != null && !isVisited.contains(n.left)) {
                     q.add(n.left);
-                    if(k==d){
-                        ans.add(n.left.val);
-                    }
                 }
                 if(n.right != null && !isVisited.contains(n.right)) {
                     q.add(n.right);
-                    if(k==d){
-                        ans.add(n.right.val);
-                    }
+                    
                 }
                 if(pMap.get(n) != null && !isVisited.contains(pMap.get(n))) {
                     q.add(pMap.get(n));
-                    if(k==d){
-                        ans.add(pMap.get(n).val);
-                    }
                 }
                 
             }
-            d++;
+           
             
             
             
         }
         
+        while(!q.isEmpty()){
+            TreeNode n = q.poll();
+            ans.add(n.val);
+        }
         
         
        return ans;
